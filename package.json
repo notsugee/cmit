@@ -6,6 +6,10 @@
   "engines": {
     "vscode": "^1.100.0"
   },
+  "extensionDependencies": [
+    "vscode.git"
+  ],
+  "publisher": "notsugee",
   "categories": [
     "Other"
   ],
@@ -17,7 +21,17 @@
         "command": "cmit.generateCommitMessage",
         "title": "cmit: Generate Commit Message"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "cmit",
+      "properties": {
+        "cmit.useEmojis": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable emojis in generated commit messages"
+        }
+      }
+    }
   },
   "scripts": {
     "lint": "eslint .",
