@@ -29,6 +29,12 @@
           "type": "boolean",
           "default": true,
           "description": "Enable emojis in generated commit messages"
+        },
+        "cmit.maxLength": {
+          "type": "number",
+          "default": 72,
+          "minimum": 10,
+          "description": "Maximum length of the commit message (in characters)"
         }
       }
     }

@@ -46,6 +46,7 @@ function activate(context) {
         // getting user settings to check for emojis
         const config = vscode.workspace.getConfiguration("cmit");
         const useEmojis = config.get("useEmojis", true);
+        const maxLength = config.get("maxLength", 72);
 
         // generating a commit message based on the first staged file
         const firstChange = stagedChanges[0];
@@ -91,17 +92,50 @@ function activate(context) {
           `${emoji}${commitType} ${context}${fileName}`.trim();
 
         // showing input box with the generated message
-        const userInput = await vscode.window.showInputBox({
-          prompt: "Enter your commit message",
-          value: commitMessage,
-          placeHolder: "Type or edit the commit message",
-        });
+        const promptForCommit = async (initialMessage) => {
+          const userInput = await vscode.window.showInputBox({
+            prompt: "Enter your commit message",
+            value: initialMessage,
+            placeHolder: "Type or edit the commit message",
+          });
+
+          if (!userInput) {
+            vscode.window.showWarningMessage(
+              "No commit message entered. Commit cancelled."
+            );
+            return null;
+          }
+
+          if (userInput.length > maxLength) {
+            vscode.window.showErrorMessage(
+              `Commit message exceeds maximum length of ${maxLength} characters. Please shorten it.`
+            );
+            return await promptForCommit(userInput);
+          }
+
+          return userInput;
+        };
+
+        // prompt for the commit message
+        const userInput = await promptForCommit(commitMessage);
 
         // if user provided message, show confirmation
         if (userInput) {
-          vscode.window.showInformationMessage(`Commit message: ${userInput}`);
+          try {
+            await repo.commit(userInput);
+            vscode.window.showInformationMessage(
+              `Committed with message: ${userInput}`
+            );
+          } catch (commitError) {
+            vscode.window.showErrorMessage(
+              `Failed to commit: ${commitError.message}`
+            );
+            console.log("Commit error details:", commitError);
+          }
         } else {
-          vscode.window.showWarningMessage("No commit message entered.");
+          vscode.window.showWarningMessage(
+            "No commit message entered. Commit cancelled."
+          );
         }
       } catch (error) {
         vscode.window.showErrorMessage(
