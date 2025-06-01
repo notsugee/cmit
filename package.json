@@ -30,11 +30,20 @@
           "default": true,
           "description": "Enable emojis in generated commit messages"
         },
-        "cmit.maxLength": {
-          "type": "number",
-          "default": 72,
-          "minimum": 10,
-          "description": "Maximum length of the commit message (in characters)"
+        "cmit.aiProvider": {
+          "type": "string",
+          "enum": [
+            "none",
+            "gpt-4o-mini",
+            "gemini-1.5-flash"
+          ],
+          "default": "none",
+          "description": "AI provider for generating commit messages. Select 'none' to use rule-based messages."
+        },
+        "cmit.apiKey": {
+          "type": "string",
+          "default": "",
+          "description": "API key for the selected AI provider (OpenAI or Gemini)."
         }
       }
     }
