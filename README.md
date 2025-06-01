@@ -1,6 +1,6 @@
-# CMIT: Git Commit Message Generator
+# cmit: AI Git Commit Message Generator
 
-**CMIT** is a Visual Studio Code extension that generates concise Git commit messages following the [Conventional Commits](https://www.conventionalcommits.org/) format. It supports AI-generated messages using OpenAI (`gpt-4o-mini`) or Google Gemini (`gemini-1.5-flash`), as well as rule-based messages with optional emoji support. The extension provides a Webview interface for editing multi-line commit messages and integrates seamlessly with VS Code’s Git extension.
+**cmit** is a Visual Studio Code extension that generates concise Git commit messages following the [Conventional Commits](https://www.conventionalcommits.org/) format. It supports AI-generated messages using OpenAI (`gpt-4o-mini`) or Google Gemini (`gemini-1.5-flash`), as well as rule-based messages with optional emoji support. The extension provides a Webview interface for editing multi-line commit messages and integrates seamlessly with VS Code’s Git extension.
 
 ## Features
 
@@ -15,7 +15,7 @@
 ## Installation
 
 1. **Install from VS Code Marketplace**:
-   - Search for “CMIT” in the Extensions view (`Ctrl+Shift+X` or `Cmd+Shift+X` on macOS).
+   - Search for cmit in the Extensions view (`Ctrl+Shift+X` or `Cmd+Shift+X` on macOS).
    - Click “Install” to add the extension.
 2. **Manual Installation** (if not published yet):
    - Clone or download the extension repository.
@@ -40,7 +40,7 @@
 
 ## Configuration
 
-Configure the extension in VS Code’s settings (`Ctrl+,` or `Cmd+,` on macOS) under `Extensions > CMIT`. Available settings:
+Configure the extension in VS Code’s settings (`Ctrl+,` or `Cmd+,` on macOS) under `Extensions > cmit`. Available settings:
 
 - **cmit.useEmojis**:
   - Type: `boolean`

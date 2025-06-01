@@ -1,7 +1,7 @@
 {
   "name": "cmit",
   "displayName": "cmit",
-  "description": "Generates concise Git commit messages with emoji support",
+  "description": "Generates concise Git commit messages with AI and emoji support",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.100.0"
@@ -11,8 +11,25 @@
   ],
   "publisher": "notsugee",
   "categories": [
-    "Other"
+    "Other",
+    "SCM Providers"
   ],
+  "keywords": [
+    "git",
+    "commit",
+    "conventional commits",
+    "message",
+    "emoji",
+    "ai",
+    "openai",
+    "gemini",
+    "vscode-extension"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/notsugee/cmit.git"
+  },
+  "icon": "icon.png",
   "activationEvents": [],
   "main": "./extension.js",
   "contributes": {
